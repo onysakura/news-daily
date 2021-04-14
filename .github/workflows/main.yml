@@ -17,9 +17,8 @@ jobs:
       - name: npm install
         run: npm install --only=prod
         working-directory: .
-      - name: fetch
+      - name: fetch data
         run: node index.js
         working-directory: .
-        env:
-          clientSecret: ${{ secrets.clientSecret }}
-          privateKey: ${{ secrets.privateKey }}
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
