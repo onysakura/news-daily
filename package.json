@@ -16,6 +16,7 @@
   "homepage": "https://github.com/guojp-temp/v2ex-rss#readme",
   "dependencies": {
     "@octokit/action": "^3.7.1",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "cheerio": "^0.22.0"
   }
 }
