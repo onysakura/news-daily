@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require("cheerio");
 const {Octokit} = require("@octokit/action");
+
 const octokit = new Octokit();
 const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 
@@ -50,7 +51,7 @@ const run = async (date) => {
     console.log(date);
     let res = await fetchData();
     console.log(res);
-    let title = 'ITHome Daily ' + new Date().toISOString().replace('T', ' ').replace('Z', '');
+    let title = 'ITHome Daily ' + date.toISOString().substr(0, 10)
     let labels = ['ithome daily'];
     let body = '';
     for (let type in res) {
