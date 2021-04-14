@@ -50,7 +50,7 @@ const run = async (date) => {
     console.log(date);
     let res = await fetchData();
     console.log(res);
-    let title = 'Github Trending ' + new Date().toISOString().replace('T', ' ').replace('Z', '');
+    let title = 'ITHome Daily ' + new Date().toISOString().replace('T', ' ').replace('Z', '');
     let labels = ['ithome daily'];
     let body = '';
     for (let type in res) {
