@@ -1,0 +1,24 @@
+name: ithome-daily
+
+on:
+  schedule:
+  - cron: "30 15 * * *"
+  workflow_dispatch:
+
+jobs:
+  ithome-daily:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out code using git
+      - uses: actions/checkout@v2
+      # Install Node 12
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: npm install
+        run: npm install
+        working-directory: .
+      - name: fetch data
+        run: node .github/actions/ithome-daily.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
