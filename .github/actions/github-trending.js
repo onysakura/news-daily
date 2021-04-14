@@ -37,10 +37,10 @@ const run = async (date) => {
     let res = await fetchData();
     console.log(res);
     let title = 'Github Trending ' + new Date().toISOString().replace('T', ' ').replace('Z', '');
-    let labels = ['github'];
+    let labels = ['github trending'];
     let body = '';
     for (let item of res) {
-        body += `- [**${item.href.substr(1)}**](https://github.com${item.href})\n\n`
+        body += `- ### [**${item.href.substr(1)}**](https://github.com${item.href})\n\n`
         body += `    ${item.description}\n\n`
     }
     const {data} = await octokit.issues.create({owner, repo, title, body, labels});
