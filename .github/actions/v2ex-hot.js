@@ -12,7 +12,7 @@ const fetchData = async () => {
         let res = await axios.get('https://v2ex.com/?tab=hot');
         if (res.data) {
             const $ = await cheerio.load(res.data);
-            $('.box > .cell .item > table tr').each((a, b) => {
+            $('.box .cell .item table tr').each((a, b) => {
                 const titleA = $(b).find('.item_title a');
                 const href = titleA.attr('href');
                 const title = titleA.text();
