@@ -1,4 +1,4 @@
-name: v2ex-rss
+name: github-trending
 
 on:
   schedule:
