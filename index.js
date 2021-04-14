@@ -1,4 +1,4 @@
-const issue = require('./src/issue');
+const issue = require('./src/index');
 
 const run = async (date) => {
     console.log(date);

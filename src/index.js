@@ -4,7 +4,7 @@ const {createAppAuth} = require("@octokit/auth-app");
 const octokit = new Octokit({
     authStrategy: createAppAuth,
     auth: {
-        id: 75833,
+        appid: 75833,
         installationId: 11101003,
         clientId: "Iv1.8d2f7d117f535668",
         clientSecret: process.env.clientSecret,
