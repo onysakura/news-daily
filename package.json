@@ -1,0 +1,30 @@
+{
+  "name": "v2ex-rss",
+  "version": "1.0.0",
+  "description": "v2ex-rss",
+  "main": "index.js",
+  "scripts": {
+    "run": "mocha -u qunit --timeout 15000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guojp-temp/v2ex-rss.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guojp-temp/v2ex-rss/issues"
+  },
+  "homepage": "https://github.com/guojp-temp/v2ex-rss#readme",
+  "dependencies": {
+    "@octokit/auth-app": "^2.4.13",
+    "@octokit/core": "^3.1.2",
+    "axios": "^0.21.1",
+    "dayjs": "^1.8.32",
+    "timeago.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^8.1.3"
+  }
+}
