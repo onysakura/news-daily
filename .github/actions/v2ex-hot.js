@@ -12,13 +12,15 @@ const fetchData = async () => {
         let res = await axios.get('https://v2ex.com/?tab=hot');
         if (res.data) {
             const $ = await cheerio.load(res.data);
-            $('.box .cell .item table tr').each((a, b) => {
+            $('#Wrapper #Main .box table tr').each((a, b) => {
                 const titleA = $(b).find('.item_title a');
                 const href = titleA.attr('href');
                 const title = titleA.text();
-                const count = $(b).find('a .count_livid').text();
-                const tab = $(b).find('.topic_info a .node').text();
-                list.push({href, title, count, tab});
+                const count = $(b).find('.count_livid').text();
+                const tab = $(b).find('.topic_info .node').text();
+                if (title) {
+                    list.push({href, title, count, tab});
+                }
             });
         } else {
             throw new Error('get html error')
