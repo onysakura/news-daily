@@ -1,0 +1,24 @@
+name: v2ex-rss
+
+on:
+  schedule:
+  - cron: "30 23 * * *"
+  workflow_dispatch:
+
+jobs:
+  refresh-rss:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: npm install --only=prod
+        working-directory: .
+      - name: fetch
+        run: node index.js
+        working-directory: .
+        env:
+          clientSecret: ${{ secrets.clientSecret }}
+          privateKey: ${{ secrets.privateKey }}
