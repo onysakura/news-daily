@@ -51,8 +51,8 @@ const run = async (date) => {
     console.log(date);
     let res = await fetchData();
     console.log(res);
-    let title = 'ITHome Daily ' + date.toISOString().substr(0, 10)
-    let labels = ['ithome daily'];
+    let title = date.toISOString().substr(0, 10) + ' ITHome Daily';
+    let labels = ['ithome'];
     let body = '';
     for (let type in res) {
         let list = res[type];

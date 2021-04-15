@@ -43,8 +43,8 @@ const fetchData = async () => {
 const run = async (date) => {
     console.log(date);
     let res = await fetchData();
-    let title = 'Zhihu RSS' + date.toISOString().substr(0, 10);
-    let labels = ['zhihu rss'];
+    let title = date.toISOString().substr(0, 10) + ' Zhihu RSS';
+    let labels = ['zhihu'];
     let body = '知乎每日精选 ' + date.toISOString().substr(0, 10);
     const {data} = await octokit.issues.create({owner, repo, title, body, labels});
     console.log(data);

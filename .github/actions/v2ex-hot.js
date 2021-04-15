@@ -35,8 +35,8 @@ const run = async (date) => {
     console.log(date);
     let res = await fetchData();
     console.log(res);
-    let title = 'V2ex Hot ' + date.toISOString().substr(0, 10)
-    let labels = ['v2ex hot'];
+    let title = date.toISOString().substr(0, 10) + ' V2ex Hot';
+    let labels = ['v2ex'];
     let body = '';
     for (let item of res) {
         body += `- ### ${item.count} [${item.title}](https://v2ex.com${item.href}) \`${item.tab}\`\n`

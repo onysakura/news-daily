@@ -35,8 +35,8 @@ const run = async (date) => {
     console.log(date);
     let res = await fetchData();
     console.log(res);
-    let title = 'Github Trending ' + date.toISOString().substr(0, 10);
-    let labels = ['github trending'];
+    let title = date.toISOString().substr(0, 10) + ' Github Trending';
+    let labels = ['github'];
     let body = '';
     for (let item of res) {
         body += `- ### [**${item.href.substr(1)}**](https://github.com${item.href})\n\n`
