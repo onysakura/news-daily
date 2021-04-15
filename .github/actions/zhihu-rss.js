@@ -53,7 +53,7 @@ const run = async (date) => {
         let number = Date.parse(item.pubDate) + 8 * 60 * 60 * 1000;
         let pubDate = new Date(number).toISOString().substr(0, 19).replace('T', ' ');
         body = `### [${item.title}](${item.guid})\n`
-        body += pubDate + '\n\n';
+        body += '`' + pubDate + '`\n\n';
         body += `${item.description}\n\n`
         await octokit.issues.createComment({owner, repo, issue_number, body});
     }
