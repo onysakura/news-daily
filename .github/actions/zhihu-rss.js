@@ -24,7 +24,7 @@ const fetchData = async () => {
             $('rss channel item').each((a, b) => {
                 const title = $(b).find('title').text();
                 const link = $(b).find('link').text();
-                const description = $(b).find('description').text();
+                const description = $(b).find('description').text().substr(0, 1000);
                 const pubDate = $(b).find('pubDate').text();
                 const guid = $(b).find('guid').text();
                 if (title) {
