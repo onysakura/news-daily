@@ -48,15 +48,14 @@ const run = async (date) => {
     let body = '知乎每日精选 ' + date.toISOString().substr(0, 10);
     const {data} = await octokit.issues.create({owner, repo, title, body, labels});
     console.log(data);
-    let issue_number = date.id;
+    let issue_number = data.number;
     for (let item of res) {
         let number = Date.parse(item.pubDate) + 8 * 60 * 60 * 1000;
-        console.log(number);
         let pubDate = new Date(number).toISOString().substr(0, 19).replace('T', ' ');
         body = `### [${item.title}](${item.guid})\n`
         body += pubDate + '\n\n';
         body += `${item.description}\n\n`
-        octokit.issues.createComment({owner, repo, issue_number, body});
+        await octokit.issues.createComment({owner, repo, issue_number, body});
     }
 }
 
