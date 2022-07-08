@@ -19,6 +19,6 @@ jobs:
         run: npm install
         working-directory: .
       - name: fetch data
-        run: node .github/actions/ithome-daily.js
+        run: node src/actions/ithome-daily.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

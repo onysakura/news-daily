@@ -19,6 +19,6 @@ jobs:
         run: npm install
         working-directory: .
       - name: fetch data
-        run: node .github/actions/v2ex-hot.js
+        run: node src/actions/v2ex-hot.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
