@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import {Octokit} from '@octokit/action';
+import { Octokit } from '@octokit/action';
 // import HttpsProxyAgent from 'https-proxy-agent';
 
 const octokit = new Octokit();
