@@ -14,7 +14,7 @@ const fetchData = async () => {
             const $ = await cheerio.load(res.data);
             const $repoList = $('.Box .Box-row');
             $repoList.each((a, b) => {
-                const repoTitleA = $(b).find('>h1>a');
+                const repoTitleA = $(b).find('>h2>a');
                 const repoHref = repoTitleA.attr('href');
                 const repoDesc = $(b).find('>p').text().replace(/\n/g, '').trim();
                 list.push({
