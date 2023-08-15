@@ -12,10 +12,12 @@ const fetchData = async () => {
             const $ = await cheerio.load(res.data);
             const $repoList = $('.Box .Box-row');
             $repoList.each((a, b) => {
-                const repoTitleA = $(b).find('>h1>a');
+                const repoTitleA = $(b).find('>h2>a');
                 const repoHref = repoTitleA.attr('href');
                 const repoDesc = $(b).find('>p').text().replace(/\n/g, '').trim();
+                const repoStars = $(b).find('div>a.Link>svg[aria-label="star"]').parent().text().trim().replace(/,/g, '');
                 list.push({
+                    stars: Number(repoStars),
                     href: repoHref,
                     description: repoDesc
                 });
@@ -38,7 +40,7 @@ const run = async (date) => {
     let labels = ['github'];
     let body = '';
     for (let item of res) {
-        body += `- ### [**${item.href.substring(1)}**](https://github.com${item.href})\n\n`;
+        body += `- ### ${isNaN(item.stars) ? '' : item.stars} [**${item.href.substring(1)}**](https://github.com${item.href})\n\n`;
         body += `    ${item.description}\n\n`;
     }
     const { data } = await octokit.issues.create({ owner, repo, title, body, labels });
