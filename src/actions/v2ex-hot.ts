@@ -42,7 +42,7 @@ const run = async (date: Date) => {
     let labels = ['v2ex'];
     let body = '';
     for (let item of res) {
-        body += `- ### ${item.count} [${item.title}](https://v2ex.com${item.href}) \`${item.tab}\`\n`;
+        body += `- ### [${item.title}](https://v2ex.com${item.href}) \`${item.tab}\` <sup>${item.count} replies</sup>\n`;
     }
     const { data } = await octokit.issues.create({ owner, repo, title, body, labels });
     console.log(data);

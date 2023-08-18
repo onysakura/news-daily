@@ -15,9 +15,9 @@ const fetchData = async () => {
                 const repoTitleA = $(b).find('>h2>a');
                 const repoHref = repoTitleA.attr('href');
                 const repoDesc = $(b).find('>p').text().replace(/\n/g, '').trim();
-                const repoStars = $(b).find('div>a.Link>svg[aria-label="star"]').parent().text().trim().replace(/,/g, '');
+                const repoStars = Number($(b).find('div>a.Link>svg[aria-label="star"]').parent().text().trim().replace(/,/g, ''));
                 list.push({
-                    stars: Number(repoStars),
+                    stars: isNaN(repoStars) ? '' : kFormatter(repoStars),
                     href: repoHref,
                     description: repoDesc
                 });
@@ -40,7 +40,7 @@ const run = async (date) => {
     let labels = ['github'];
     let body = '';
     for (let item of res) {
-        body += `- ### ${isNaN(item.stars) ? '' : item.stars} [**${item.href.substring(1)}**](https://github.com${item.href})\n\n`;
+        body += `- ### [**${item.href.substring(1)}**](https://github.com${item.href}) <sup>${item.stars} stars</sup> \n\n`;
         body += `    ${item.description}\n\n`;
     }
     const { data } = await octokit.issues.create({ owner, repo, title, body, labels });
@@ -49,4 +49,7 @@ const run = async (date) => {
 run(new Date()).catch((err) => {
     throw err;
 });
+function kFormatter(num) {
+    return Math.abs(num) > 999 ? Math.sign(num) * parseFloat((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num);
+}
 //# sourceMappingURL=github-trending.js.map
