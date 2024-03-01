@@ -1,0 +1,22 @@
+name: appinn-rss
+
+on:
+  schedule:
+  - cron: "30 15 * * 0"
+  workflow_dispatch:
+
+jobs:
+  zhihu-rss:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: npm install
+        run: npm ci
+        working-directory: .
+      - name: fetch data
+        run: node src/actions/appinn-rss.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

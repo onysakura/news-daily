@@ -9,7 +9,7 @@ const fetchData = async () => {
     const list: { title: string; link: string; description: string; pubDate: string; guid: string }[] = [];
     try {
         console.log('start fetching list');
-        let res = await axios.get('https://www.zhihu.com/rss', {
+        let res = await axios.get('https://feeds.appinn.com/appinns/', {
             headers: {
                 Accept: 'application/xml'
             }
@@ -39,9 +39,9 @@ const fetchData = async () => {
 const run = async (date: Date) => {
     console.log(date);
     let res = await fetchData();
-    let title = date.toISOString().substring(0, 10) + ' Zhihu RSS';
-    let labels = ['zhihu'];
-    let body = `知乎每日精选 ${date.toISOString().substring(0, 10)} 更新`;
+    let title = date.toISOString().substring(0, 10) + ' Appinn RSS';
+    let labels = ['appinn'];
+    let body = `小众软件RSS ${date.toISOString().substring(0, 10)} 更新`;
     const { data } = await octokit.issues.create({ owner, repo, title, body, labels });
     console.log(data);
     let issue_number = data.number;
