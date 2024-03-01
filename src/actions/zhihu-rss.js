@@ -40,7 +40,7 @@ const run = async (date) => {
     let res = await fetchData();
     let title = date.toISOString().substring(0, 10) + ' Zhihu RSS';
     let labels = ['zhihu'];
-    let body = '知乎每日精选 ' + date.toISOString().substring(0, 10);
+    let body = `知乎每日精选 ${date.toISOString().substring(0, 10)} 更新`;
     const { data } = await octokit.issues.create({ owner, repo, title, body, labels });
     console.log(data);
     let issue_number = data.number;
