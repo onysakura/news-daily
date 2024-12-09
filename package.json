@@ -17,7 +17,12 @@
     "homepage": "https://github.com/onysakura/news-daily#readme",
     "scripts": {
         "build": "tsc --build",
-        "ithome": "node src/actions/ithome-daily.js"
+        "github": "tsc --build & node src/actions/github-trending.js",
+        "ithome": "tsc --build & node src/actions/ithome-daily.js",
+        "appinn": "tsc --build & node src/actions/appinn-rss.js",
+        "v2ex": "tsc --build & node src/actions/v2ex-hot.js",
+        "zhihu": "tsc --build & node src/actions/zhihu-rss.js",
+        "test": "tsc --build & node src/actions/test.js"
     },
     "dependencies": {
         "@octokit/action": "^4.0.1",
