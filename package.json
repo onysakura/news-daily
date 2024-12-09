@@ -25,20 +25,20 @@
         "test": "tsc --build & node src/actions/test.js"
     },
     "dependencies": {
-        "@octokit/action": "^4.0.1",
-        "axios": "^0.27.2",
-        "cheerio": "^1.0.0-rc.12",
-        "https-proxy-agent": "^5.0.1"
+        "@octokit/action": "4.0.10",
+        "axios": "1.7.9",
+        "cheerio": "1.0.0",
+        "https-proxy-agent": "5.0.1"
     },
     "devDependencies": {
-        "@types/node": "^18.0.3",
-        "@typescript-eslint/eslint-plugin": "^5.30.5",
-        "@typescript-eslint/parser": "^5.30.5",
-        "eslint": "^8.19.0",
-        "eslint-config-alloy": "^4.6.2",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-prettier": "^4.2.1",
-        "prettier": "^2.7.1",
-        "typescript": "^4.7.4"
+        "@types/node": "18.19.67",
+        "@typescript-eslint/eslint-plugin": "5.62.0",
+        "@typescript-eslint/parser": "5.62.0",
+        "eslint": "8.57.1",
+        "eslint-config-alloy": "4.9.0",
+        "eslint-config-prettier": "8.10.0",
+        "eslint-plugin-prettier": "4.2.1",
+        "prettier": "3.4.2",
+        "typescript": "4.9.5"
     }
 }
