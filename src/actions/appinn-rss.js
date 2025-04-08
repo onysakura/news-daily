@@ -18,7 +18,9 @@ const fetchData = async () => {
             $('rss channel item').each((a, b) => {
                 const title = $(b).find('title').text();
                 const link = $(b).find('link').text();
-                const description = $(b).find('description').text().substring(0, 1000);
+                const description = $(b).find('description').text()
+                    .replace(/@/g, '@\u200B') // 避免触发@
+                    .substring(0, 1000);
                 const pubDate = $(b).find('pubDate').text();
                 const guid = $(b).find('guid').text();
                 if (title) {
