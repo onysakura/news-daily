@@ -9,14 +9,14 @@ const fetchData = async () => {
     const list: { title: string; link: string; description: string; pubDate: string; guid: string }[] = [];
     try {
         console.log('start fetching list');
-        let res = await axios.get('https://www.zhihu.com/rss', {
+        let res = await axios.get('https://rsshub.app/zhihu/hot', {
             headers: {
                 Accept: 'application/xml'
             }
         });
         if (res.data) {
             let data = res.data.replace('&lt;', '<').replace('&gt;', '>').replace('&amp;', '&');
-            const $ = await cheerio.load(data, { xmlMode: true });
+            const $ = await cheerio.load(data, { xml: true });
             $('rss channel item').each((a: any, b: any) => {
                 const title = $(b).find('title').text();
                 const link = $(b).find('link').text();
@@ -41,7 +41,7 @@ const run = async (date: Date) => {
     let res = await fetchData();
     let title = date.toISOString().substring(0, 10) + ' Zhihu RSS';
     let labels = ['zhihu'];
-    let body = `知乎每日精选 ${date.toISOString().substring(0, 10)} 更新`;
+    let body = `知乎热榜 ${date.toISOString().substring(0, 10)} 更新`;
     const { data } = await octokit.issues.create({ owner, repo, title, body, labels });
     console.log(data);
     let issue_number = data.number;

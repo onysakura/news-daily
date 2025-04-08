@@ -2,7 +2,7 @@ name: zhihu-rss
 
 on:
   schedule:
-  - cron: "30 15 * * 0"
+  - cron: "30 15 * * *"
   workflow_dispatch:
 
 jobs:
